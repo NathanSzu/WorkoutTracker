@@ -30,7 +30,6 @@ router.put("/api/workouts/:id", ({body, params}, res) => {
     {$push: {exercises: body}},
     {new: true, runValidators: true}
   )
-    // .sort({ date: -1 })
     .then(workouts => {
       res.json(workouts);
     })

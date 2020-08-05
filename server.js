@@ -5,14 +5,11 @@ const path = require('path');
 const Workout = require('./models/Workout.js')
 const router = require('express').Router();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 const db = require("./models");
 
 const app = express();
-
-app.use(require('./routes/api-routes.js'));
-app.use(require('./routes/html-routes.js'));
 
 app.use(logger("dev"));
 
@@ -22,6 +19,9 @@ app.use(express.json());
 app.use(express.static("public"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/populatedb", { useNewUrlParser: true, useUnifiedTopology: true });
+
+app.use(require('./routes/api-routes.js'));
+app.use(require('./routes/html-routes.js'));
 
 // app.get('/api/workouts/range', (req, res) => {
 //   Workout.find({}).limit(7)
