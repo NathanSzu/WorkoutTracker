@@ -15,7 +15,6 @@ router.post("/api/workouts", (req, res) => {
 // route to get all workouts
 router.get("/api/workouts", (req, res) => {
   Workout.find()
-    // .sort({ date: -1 })
     .then(workouts => {
       res.json(workouts);
     })
