@@ -15,9 +15,9 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-const MONGODB_URI = process.env.MongoAtlas || "mongodb://localhost/workout";
+;
 
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGOATLAS_URI || "mongodb://localhost/workout", { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.use(require('./routes/api-routes.js'));
 app.use(require('./routes/html-routes.js'));
